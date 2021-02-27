@@ -13,7 +13,7 @@ function Person({ person }) {
         value={person.name} 
         onChange={e => setPersonName(person.id, e.target.value)}
       />
-      <button onClick={() => deletePerson(person.id)}>delete person</button>
+      <button onClick={() => deletePerson(person.id)}>delete</button>
       <PaymentList id={person.id} payments={person.payments}/>
     </div>
   );

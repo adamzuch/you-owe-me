@@ -8,7 +8,7 @@ function PaymentList({ id, payments }) {
   return (
     <div className="PaymentList">
       { payments.map(payment => <Payment key={payment.id} id={id} payment={payment}/>) }
-      <button onClick={() => addPayment(id)}>add payment</button>
+      <button onClick={() => addPayment(id)}>add</button>
     </div>
   );
 

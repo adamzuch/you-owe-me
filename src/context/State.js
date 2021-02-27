@@ -11,11 +11,11 @@ const initialState = {
       payments: [
         {
           id: nanoid(),
-          value: 33
+          value: "33"
         },
         {
           id: nanoid(),
-          value: 12
+          value: "12"
         }
       ] 
     },
@@ -25,9 +25,17 @@ const initialState = {
       payments: [
         {
           id: nanoid(),
-          value: 94
+          value: "94"
         }
       ]
+    }
+  ],
+  results: [
+    {
+      id: nanoid(),
+      debtor: "Bob",
+      creditor: "Alice",
+      value: 48.5
     }
   ]
 }
@@ -62,6 +70,7 @@ export const Provider = ({ children }) => {
   return (
     <Context.Provider value={{ 
       persons: state.persons,
+      results: state.results,
       addPayment,
       addPerson,
       deletePayment,

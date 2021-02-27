@@ -10,10 +10,10 @@ function Payment({ id, payment }) {
       <input 
         className={isValid ? "ValidPaymentInput" : "InvalidPaymentInput"}
         type="text" 
-        value={"$ " + payment.value} 
-        onChange={e => setPaymentValue(id, payment.id, e.target.value.slice(2))}
+        value={payment.value} 
+        onChange={e => setPaymentValue(id, payment.id, e.target.value)}
       />
-      <button onClick={() => deletePayment(id, payment.id)}>delete payment</button>
+      <button onClick={() => deletePayment(id, payment.id)}>delete</button>
     </div>
   );
 }

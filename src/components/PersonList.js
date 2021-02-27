@@ -8,9 +8,8 @@ function PersonList() {
   return (
     <div className="PersonList">
       { persons.map(person => <Person key={person.id} person={person}/>) }
-      <button onClick={addPerson}>add person</button>
+      <button onClick={addPerson}>add</button>
     </div>
-
   );
 
 }
