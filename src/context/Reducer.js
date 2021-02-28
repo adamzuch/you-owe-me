@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { findObjectInArray, replaceObjectInArray } from "../common";
+import { findObjectInArray, replaceObjectInArray, calculate } from "../common";
 
 export default (state, action) => {
 
@@ -25,6 +25,8 @@ export default (state, action) => {
         persons: persons.concat({ id: nanoid(), name: "", payments: [] })
       };
     }
+
+    case "CALCULATE": return calculate(state);
 
     case "DELETE_PAYMENT": {
       const { persons } = state;
@@ -61,8 +63,6 @@ export default (state, action) => {
     case "SET_PAYMENT_VALUE": {
       const { persons } = state;
       const { personId, paymentId, paymentValue } = action.payload;
-
-      // const parsedPaymentValue = isNaN(parseFloat(paymentValue)) ? paymentValue : parseFloat(paymentValue);
 
       const [ person, personIndex ] = findObjectInArray(persons, "id", personId);
       const [ payment, paymentIndex ] = findObjectInArray(person.payments, "id", paymentId);

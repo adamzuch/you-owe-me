@@ -50,21 +50,30 @@ export const Provider = ({ children }) => {
   // component actions dispatched to Reducer
   function addPayment(personId) {
     dispatch({ type: "ADD_PAYMENT", payload: { personId } });
+    calculate();
   }
   function addPerson() {
     dispatch({ type: "ADD_PERSON", payload: {} });
+    calculate();
   }
   function deletePayment(personId, paymentId) {
     dispatch({ type: "DELETE_PAYMENT", payload: { personId, paymentId } });
+    calculate();
   }
   function deletePerson(personId) { 
     dispatch({ type: "DELETE_PERSON", payload: { personId } });
+    calculate();
   }
   function setPersonName(personId, personName) {
     dispatch({ type: "SET_PERSON_NAME", payload: { personId, personName } });
+    calculate();
   }
   function setPaymentValue(personId, paymentId, paymentValue) {
     dispatch({ type: "SET_PAYMENT_VALUE", payload: { personId, paymentId, paymentValue } });
+    calculate();
+  }
+  function calculate() {
+    dispatch({ type: "CALCULATE", payload: {} })
   }
 
   return (

@@ -4,7 +4,7 @@ function Result({ result }) {
   const { debtor, creditor, value } = result;
   return (
     <div className="result">
-      {`${debtor} pays ${value} to ${creditor}`}
+      {`${debtor} pays ${value.toFixed(2)} to ${creditor}`}
     </div>
   );
 }
