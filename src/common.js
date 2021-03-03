@@ -16,18 +16,20 @@ export function findObjectInArray(arr, prop, value) {
 export function calculate(state) {
   const { persons } = state;
 
+  // don't need to calculate payments when there is less than two people.
+  if (persons.length < 2) return { ...state, results: [] };
+
   const balances = getBalances(persons);
   const results = determinePayments(balances);
-  return {
-    ...state,
-    results: results
-  };
+  return { ...state, results: results };
 }
 
 function determinePayments(balances) {
   const results = [];
-  while (balances.length > 1 && !withinError(balances[0].value)) {
+
+  while (balances.length > 1 && !withinError(balances[0][1])) {
     const [ currentName, currentBalance ] = balances[0];
+
     // find another balance with different polarity to exchange with
     let i = 0;
     let [ otherName, otherBalance ] = balances[i];
@@ -61,13 +63,12 @@ function getBalances(persons) {
   let totals = [];
   let total = 0;
   for (const person of persons) {
-    const payments = person.payments.map(payment => isNaN(payment.value) ? 0 : parseFloat(payment.value));
+    const payments = person.payments.map(payment => isNaN(payment.value) || payment.value === "" ? 0 : parseFloat(payment.value));
     const paymentsSum = payments.reduce(getSum, 0);
 
     total += paymentsSum;
     totals.push({ name: person.name, total: paymentsSum });
   }
-
   // once total sum of all payments is known we can calculate who owes money (-ve value) and who is owed (+ve).
   const contribution = total / persons.length;
   return totals.map(person => [
@@ -80,6 +81,6 @@ const hasSamePolarity = (x, y) => XNOR(x > 0, y > 0);
 
 const XNOR = (a, b) => (a && b) || (!a && !b);
 
-const withinError = (value) => value > -0.01 && value < 0.01;
+const withinError = (value) => Math.abs(value) < 0.01;
 
 const getSum = (accumulator, currentValue) => accumulator + currentValue;

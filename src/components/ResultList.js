@@ -7,7 +7,7 @@ function ResultList() {
 
   return (
     <div className="ResultList">
-      { results.map(result => <Result key={result.id} result={result}/>) }
+      { results.length > 0 ? results.map(result => <Result key={result.id} result={result}/>) : "Already balanced" }
     </div>
   );
 }
