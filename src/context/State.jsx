@@ -12,12 +12,8 @@ const initialState = {
       payments: [
         {
           id: nanoid(),
-          value: "33"
+          value: "10"
         },
-        {
-          id: nanoid(),
-          value: "12"
-        }
       ] 
     },
     {
@@ -26,7 +22,7 @@ const initialState = {
       payments: [
         {
           id: nanoid(),
-          value: "94"
+          value: "20"
         }
       ]
     }
@@ -36,7 +32,7 @@ const initialState = {
       id: nanoid(),
       debtor: "Bob",
       creditor: "Alice",
-      value: 48.5
+      value: 5
     }
   ]
 }
