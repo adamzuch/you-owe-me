@@ -1,21 +1,9 @@
 import { nanoid } from "nanoid";
+import { deleteObjectInArray } from "./common";
 
-export function replaceObjectInArray(arr, i, obj) {
-  return Array.prototype.concat(
-    arr.slice(0, i),
-    [obj],
-    arr.slice(i + 1)
-  );
-}
-
-export function findObjectInArray(arr, prop, value) {
-  const i = arr.findIndex(item => item[prop] === value);
-  return [ arr[i], i ];
-}
-
-export function calculate(state) {
+export function refresh(state) {
   const { persons } = state;
-
+  console.log(persons);
   // don't need to calculate payments when there is less than two people.
   if (persons.length < 2) return { ...state, results: [] };
 
@@ -52,8 +40,8 @@ function determinePayments(balances) {
     });
 
     // delete balances which have been resolved (i.e. ~0)
-    if (withinError(balances[i][1])) balances = Array.prototype.concat(balances.slice(0, i), balances.slice(i + 1));
-    if (withinError(balances[0][1])) balances = Array.prototype.concat(balances.slice(1));
+    if (withinError(balances[i][1])) balances = deleteObjectInArray(balances, i);
+    if (withinError(balances[0][1])) balances = deleteObjectInArray(balances, 0);
   }
   return results;
 }
@@ -63,12 +51,15 @@ function getBalances(persons) {
   let totals = [];
   let total = 0;
   for (const person of persons) {
-    const payments = person.payments.map(payment => isNaN(payment.value) || payment.value === "" ? 0 : parseFloat(payment.value));
+    const payments = person.payments.map(payment => {
+      return isNaN(payment.value) || payment.value === "" ? 0 : parseFloat(payment.value);
+    });
     const paymentsSum = payments.reduce(getSum, 0);
 
     total += paymentsSum;
     totals.push({ name: person.name, total: paymentsSum });
   }
+
   // once total sum of all payments is known we can calculate who owes money (-ve value) and who is owed (+ve).
   const contribution = total / persons.length;
   return totals.map(person => [

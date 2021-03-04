@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import { nanoid } from "nanoid";
+import Actions from "./actions";
 import Reducer from "./Reducer";
 
 // initial state
@@ -49,43 +50,44 @@ export const Provider = ({ children }) => {
 
   // component actions dispatched to Reducer
   function addPayment(personId) {
-    dispatch({ type: "ADD_PAYMENT", payload: { personId } });
-    calculate();
+    dispatch({ type: Actions.ADD_PAYMENT, payload: { personId } });
+    refreshResults();
   }
   function addPerson() {
-    dispatch({ type: "ADD_PERSON", payload: {} });
-    calculate();
+    dispatch({ type: Actions.ADD_PERSON, payload: {} });
+    refreshResults();
+  }
+  function changePaymentValue(personId, paymentId, paymentValue) {
+    dispatch({ type: Actions.CHANGE_PAYMENT_VALUE, payload: { personId, paymentId, paymentValue } });
+    refreshResults();
+  }
+  function changePersonName(personId, personName) {
+    dispatch({ type: Actions.CHANGE_PERSON_NAME, payload: { personId, personName } });
+    refreshResults();
   }
   function deletePayment(personId, paymentId) {
-    dispatch({ type: "DELETE_PAYMENT", payload: { personId, paymentId } });
-    calculate();
+    dispatch({ type: Actions.DELETE_PAYMENT, payload: { personId, paymentId } });
+    refreshResults();
   }
   function deletePerson(personId) { 
-    dispatch({ type: "DELETE_PERSON", payload: { personId } });
-    calculate();
+    dispatch({ type: Actions.DELETE_PERSON, payload: { personId } });
+    refreshResults();
   }
-  function setPersonName(personId, personName) {
-    dispatch({ type: "SET_PERSON_NAME", payload: { personId, personName } });
-    calculate();
-  }
-  function setPaymentValue(personId, paymentId, paymentValue) {
-    dispatch({ type: "SET_PAYMENT_VALUE", payload: { personId, paymentId, paymentValue } });
-    calculate();
-  }
-  function calculate() {
-    dispatch({ type: "CALCULATE", payload: {} })
+  function refreshResults() {
+    dispatch({ type: Actions.REFRESH_RESULTS, payload: {} })
   }
 
+  // expose actions to components by passing functions as props
   return (
     <Context.Provider value={{ 
       persons: state.persons,
       results: state.results,
       addPayment,
       addPerson,
+      changePaymentValue,
+      changePersonName,
       deletePayment,
       deletePerson,
-      setPersonName,
-      setPaymentValue
     }}>
       { children }
     </Context.Provider>
