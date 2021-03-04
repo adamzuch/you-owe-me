@@ -9,6 +9,7 @@ function Person({ person }) {
     <input 
         className="PersonInput"
         type="text" 
+        placeholder="Enter a name..."
         value={person.name} 
         onChange={e => changePersonName(person.id, e.target.value)}
       />

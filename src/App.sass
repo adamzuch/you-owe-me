@@ -1,5 +1,5 @@
 $font-stack: Arial, Helvetica, sans-serif
-$primary-color: #0000ff
+$primary-color: #000000
 $good-color: #00b100
 $error-color: #ca0000
 
@@ -32,11 +32,15 @@ html, body
 .PersonList
   text-align: right
 
+.Result
+  margin-bottom: 10px
+
 .Person
   margin-bottom: 1em
 
 .PersonInput
   color: $primary-color
+  font-weight: bold
 
 .InvalidPaymentInput
   color: $error-color
@@ -46,3 +50,6 @@ html, body
 
 input, button
   font-size: 1em
+
+input:placeholder-shown
+  color: $primary-color

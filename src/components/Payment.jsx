@@ -8,7 +8,8 @@ function Payment({ id, payment }) {
     <div className="Payment">
       <input 
         className={isValid ? "ValidPaymentInput" : "InvalidPaymentInput"}
-        type="text" 
+        type="text"
+        placeholder="Enter a payment..." 
         value={payment.value} 
         onChange={e => changePaymentValue(id, payment.id, e.target.value)}
       />
