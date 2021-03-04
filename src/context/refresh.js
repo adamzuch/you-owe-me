@@ -61,10 +61,8 @@ function getBalances(persons) {
 
   // once total sum of all payments is known we can calculate who owes money (-ve value) and who is owed (+ve).
   const contribution = total / persons.length;
-  return totals.map(person => [
-    person.name,
-    (person.total - contribution)
-  ]);
+  const balances = totals.map(person => [ person.name, person.total - contribution ]);
+  return balances.filter(([ , balance ]) => !withinError(balance));
 }
 
 const hasSamePolarity = (x, y) => XNOR(x > 0, y > 0);
