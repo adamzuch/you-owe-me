@@ -74,7 +74,7 @@ export const Provider = ({ children }) => {
     refreshResults();
   }
   function refreshResults() {
-    dispatch({ type: Actions.REFRESH_RESULTS, payload: {} })
+    dispatch({ type: Actions.REFRESH_RESULTS, payload: {} });
   }
 
   // expose actions to components by passing functions as props

@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
-import Actions from "./actions";
+
 import { findObjectInArray, replaceObjectInArray } from "./common";
+import Actions from "./actions";
 import { refresh } from "./refresh";
 
 export default (state, action) => {
@@ -18,6 +19,7 @@ export default (state, action) => {
         })
       };
     }
+
     case Actions.ADD_PERSON: {
       const { persons } = state;
       return {
@@ -40,6 +42,7 @@ export default (state, action) => {
         })
       };
     }
+
     case Actions.CHANGE_PERSON_NAME: {
       const { persons } = state;
       const { personId, personName } = action.payload;
@@ -62,6 +65,7 @@ export default (state, action) => {
         })
       };
     }
+
     case Actions.DELETE_PERSON: {
       const { persons } = state;
       const { personId } = action.payload;

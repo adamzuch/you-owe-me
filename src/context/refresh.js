@@ -3,7 +3,6 @@ import { deleteObjectInArray } from "./common";
 
 export function refresh(state) {
   const { persons } = state;
-  console.log(persons);
   // don't need to calculate payments when there is less than two people.
   if (persons.length < 2) return { ...state, results: [] };
 
