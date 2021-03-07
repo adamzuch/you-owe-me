@@ -1,10 +1,10 @@
 import React from "react";
+import { resultToString } from "./common";
 
 function Result({ result }) {
-  const { debtor, creditor, value } = result;
   return (
     <div className="Result">
-      {`${debtor ? debtor : "Someone"} pays ${creditor ? creditor : "Someone"} ${value.toFixed(2)}`}
+      {resultToString(result)}
     </div>
   );
 }

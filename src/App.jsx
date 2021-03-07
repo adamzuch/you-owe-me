@@ -11,6 +11,7 @@ function App() {
       <div className="App">
         <div className="Header">
           <h1>paysplit</h1>
+          Resolve group payments instantly. Share results with copy/paste.
         </div>
         <div className="Wrapper">
           <PersonList />
