@@ -12,34 +12,42 @@ html, body
   padding: 0
 
 .App
-  height: 100vh
-  padding: 1rem
+  display: flex
+  flex-direction: column
   font-family: $font-stack
+  height: 100vh
 
 .Header
   color: $primary-color
-  text-align: center
+  flex: 1 1 auto
   margin: 1em
+  text-align: center
 
 .Wrapper
-  justify-content: center
-  display: flex
-  flex-direction: row
   align-items: stretch
+  display: flex
+  flex: 1 1 100%
+  flex-direction: row
+  justify-content: center
+  overflow: auto
 
-.PersonList, .ResultList
+.PersonPanel, .ResultPanel
   flex: 1
-  padding: 1em
 
-.PersonList
-  text-align: right
-
-.ResultList
+.PersonPanel
   display: flex
   flex-direction: column
+  padding-right: 1em
+  text-align: right
 
-.Result
-  margin-bottom: $result-separation
+.AddPersonPanel
+  margin-bottom: 1em
+
+.PersonList
+  display: flex
+  flex-direction: column-reverse
+  overflow: auto
+  scrollbar-width: none
 
 .Person
   margin-bottom: 1em
@@ -48,11 +56,11 @@ html, body
   color: $primary-color
   font-weight: bold
 
-.InvalidPaymentInput
-  color: $error-color
-
 .ValidPaymentInput
   color: $good-color
+
+.InvalidPaymentInput
+  color: $error-color
 
 input, button
   font-size: 1em
@@ -60,5 +68,24 @@ input, button
 input:placeholder-shown
   color: $primary-color
 
-.CopyButton
-  margin-bottom: $result-separation 
+.ResultPanel
+  display: flex
+  flex-direction: column
+  padding-left: 1em
+
+.CopyPanel
+  flex: 1 1 auto
+  margin-bottom: 1em
+
+.ResultList
+  flex: 1 1 100%
+  overflow: auto
+  scrollbar-width: none
+
+.Result
+  margin-bottom: $result-separation
+
+.Footer
+  flex: 1 1 auto
+  padding: 0.8em
+  text-align: center

@@ -2,8 +2,8 @@ import React from "react";
 import { hot } from "react-hot-loader";
 import "./App.sass";
 import { Provider } from "./context/State";
-import PersonList from "./components/PersonList";
-import ResultList from "./components/ResultList";
+import PersonPanel from "./components/PersonPanel";
+import ResultPanel from "./components/ResultPanel";
 
 function App() {
   return (
@@ -14,8 +14,11 @@ function App() {
           Resolve group payments instantly. Share results with copy/paste.
         </div>
         <div className="Wrapper">
-          <PersonList />
-          <ResultList />
+          <PersonPanel />
+          <ResultPanel />
+        </div>
+        <div className="Footer">
+          Created by Adam Zuchowicz. Source code on <a href="https://www.github.com/adamzuch/paysplit">GitHub</a>
         </div>
       </div>
     </Provider>

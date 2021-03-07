@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../context/State";
-import PaymentList from "./PaymentList";
+import PaymentPanel from "./PaymentPanel";
 
 function Person({ person }) {
   const { changePersonName, deletePerson } = useContext(Context);
@@ -14,7 +14,7 @@ function Person({ person }) {
         onChange={e => changePersonName(person.id, e.target.value)}
       />
       <button onClick={() => deletePerson(person.id)}>delete</button>
-      <PaymentList id={person.id} payments={person.payments}/>
+      <PaymentPanel id={person.id} payments={person.payments}/>
     </div>
   );
 }
