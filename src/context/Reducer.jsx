@@ -24,7 +24,7 @@ export default (state, action) => {
       const { persons } = state;
       return {
         ...state,
-        persons: persons.concat({ id: nanoid(), name: "", payments: [] })
+        persons: persons.concat({ id: nanoid(), name: "", payments: [{ id: nanoid(), value: "0" }] })
       };
     }
 
@@ -57,6 +57,14 @@ export default (state, action) => {
       const { persons } = state;
       const { personId, paymentId } = action.payload;
       const [ person, index ] = findObjectInArray(persons, "id", personId);
+
+      // delete entire person if this is their last payment
+      if (person.payments.length <= 1) {
+        return {
+          ...state,
+          persons: persons.filter(person => person.id !== personId)
+        };
+      }
       return {
         ...state,
         persons: replaceObjectInArray(persons, index, {
