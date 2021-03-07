@@ -9,7 +9,9 @@ function App() {
   return (
     <Provider>
       <div className="App">
-        <h1 className="Header">paysplit</h1>
+        <div className="Header">
+          <h1>paysplit</h1>
+        </div>
         <div className="Wrapper">
           <PersonList />
           <ResultList />
