@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../context/State";
+import { HiMinusCircle } from "react-icons/hi"
 
 function Payment({ id, payment }) {
   const { deletePayment, changePaymentValue } = useContext(Context);
@@ -13,7 +14,7 @@ function Payment({ id, payment }) {
         value={payment.value} 
         onChange={e => changePaymentValue(id, payment.id, e.target.value)}
       />
-      <button onClick={() => deletePayment(id, payment.id)}>delete</button>
+      <button id="DeleteButton" onClick={() => deletePayment(id, payment.id)}><HiMinusCircle size={18}/></button>
     </div>
   );
 }
