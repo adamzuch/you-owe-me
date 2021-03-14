@@ -1,6 +1,6 @@
 import React from "react";
 import { hot } from "react-hot-loader";
-import "./App.sass";
+import "./styles/App.sass";
 import { Provider } from "./context/State";
 import PersonPanel from "./components/PersonPanel";
 import ResultPanel from "./components/ResultPanel";

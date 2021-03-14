@@ -6,7 +6,7 @@ function Person({ person }) {
   const { changePersonName, deletePerson } = useContext(Context);
   return (
     <div className="Person">
-    <input 
+      <input 
         className="PersonInput"
         type="text" 
         placeholder="Enter a name..."

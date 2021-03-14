@@ -7,11 +7,11 @@ export default function PersonPanel() {
 
   return (
     <div className="PersonPanel">
-      <div className="AddPersonPanel">
-        <button onClick={addPerson}>add</button>
-      </div>
-      <div className="PersonList">
-        { persons.map(person => <Person key={person.id} person={person}/>) }
+      <div className="PersonListWrapper">
+        <div className="AddPersonPanel"><button onClick={addPerson}>add</button></div>
+        <div className="PersonList">
+          { persons.map(person => <Person key={person.id} person={person}/>) }
+        </div>
       </div>
     </div>
   );
