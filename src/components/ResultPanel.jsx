@@ -3,10 +3,13 @@ import { Context } from "../context/State";
 import { resultToString } from "./common";
 import Result from "./Result";
 
+import { Card } from "@material-ui/core";
+
 export default function ResultPanel() {
   const { results } = useContext(Context);
 
   return (
+    <Card>
     <div className="ResultPanel">
       <div className="CopyPanel">
         <button 
@@ -20,6 +23,7 @@ export default function ResultPanel() {
         { results.length > 0 ? results.map(result => <Result key={result.id} result={result}/>) : "Payments already balanced" }
       </div>
     </div>
+    </Card>
   );
 }
 

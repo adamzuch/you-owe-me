@@ -8,42 +8,36 @@ import ResultPanel from "./components/ResultPanel";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Grid } from "@material-ui/core";
+import blue from '@material-ui/core/colors/blue';
+import { Box, Container } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
 function App() {
 
   const theme = createMuiTheme({
     palette: {
-      type: "light"
+      type: "light",
+      primary: blue
     },
-    typography: {
-      fontFamily: "Roboto"
-    }
+    spacing: 8
   });
 
   return (
     <Provider>
       <ThemeProvider theme={theme}>
         <CssBaseline/>
-        <div className="App">
-          <div className="Header">
-            <h1>paysplit</h1>
-            Resolve group payments instantly. Share results with copy/paste.
-          </div>
-          <div className="Wrapper">
-            <Grid
-              container
-              direction="row"
-              justify="space-evenly"
-              alignItems="stretch"
-            >
-              <PersonPanel />
-              <ResultPanel />
+        <Container className="App">
+          <Box m={2} className="Header" textAlign="center">
+            <Typography variant="h2"> paysplit</Typography>
+            <Typography variant="body1">
+              Resolve group payments instantly. Share results with copy/paste.
+            </Typography>
+          </Box>
+            <Grid container alignItems="stretch">
+              <Grid item xs={12} md={6}><PersonPanel /></Grid>
+              <Grid item xs={12} md={6}><ResultPanel /></Grid>
             </Grid>
-          </div>
-          <div className="Footer">
-            Created by Adam Zuchowicz. Source code on <a href="https://www.github.com/adamzuch/paysplit">GitHub</a>
-          </div>
-        </div>
+        </Container>
       </ThemeProvider>
     </Provider>
   );
