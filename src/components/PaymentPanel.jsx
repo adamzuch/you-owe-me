@@ -10,7 +10,7 @@ export default function PaymentPanel({ id, payments }) {
       <div className="PaymentList">
         { payments.map(payment => <Payment key={payment.id} id={id} payment={payment}/>) }
       </div>
-      <button onClick={() => addPayment(id)}>add</button>
+      <button class="AddPaymentButton" onClick={() => addPayment(id)}>add</button>
     </div>
   );
 }

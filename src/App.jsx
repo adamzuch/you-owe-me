@@ -10,15 +10,12 @@ function App() {
     <Provider>
       <div className="App">
         <div className="Header">
-          <h1>paysplit</h1>
-          Resolve group payments instantly. Share results with copy/paste.
+          <h1>you owe me</h1>
+          <div>Add people and the payments they made on the left. See who owes who on the right to achieve equal contribution.</div>
         </div>
         <div className="Wrapper">
           <PersonPanel />
           <ResultPanel />
-        </div>
-        <div className="Footer">
-          Created by Adam Zuchowicz. Source code on <a href="https://www.github.com/adamzuch/paysplit">GitHub</a>
         </div>
       </div>
     </Provider>

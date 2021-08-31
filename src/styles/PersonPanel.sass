@@ -1,5 +1,5 @@
-$good-color: #00b100
-$error-color: #ca0000
+$good-color: #05ca05
+$error-color: #d61a1a
 
 .PersonPanel
   display: flex
@@ -18,15 +18,14 @@ $error-color: #ca0000
   margin-bottom: 1em
 
 #DeleteButton
-  border: none
-  background: transparent
+  // border: none
+  // background: transparent
   cursor: pointer
-  line-height: 50%
+  // line-height: 50%
   text-align: center
 
 #DeleteButton:hover
-  color: red
-
+  color: $error-color
 
 .PersonList
   align-self: flex-end
@@ -37,16 +36,16 @@ $error-color: #ca0000
 
 .Person
   align-self: flex-end
-  background: #eeeeee
+  background: #f5f5f5
   margin-bottom: 1em
   padding: 1em
+  border-radius: 10px
+
+.PaymentList
+  margin-bottom: 1em
 
 .PersonInput
-  color: black
-  font-weight: bold
-
-.ValidPaymentInput
-  color: $good-color
+  margin-bottom: 1em
 
 .InvalidPaymentInput
   color: $error-color
