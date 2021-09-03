@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../context/State";
 import PaymentPanel from "./PaymentPanel";
-import { TiDelete } from "react-icons/ti";
 
 function Person({ person }) {
   const { changePersonName, deletePerson } = useContext(Context);

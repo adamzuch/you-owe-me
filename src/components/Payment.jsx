@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Context } from "../context/State";
-import { TiDeleteOutline } from "react-icons/ti"
 
 function Payment({ id, payment }) {
   const { deletePayment, changePaymentValue } = useContext(Context);
